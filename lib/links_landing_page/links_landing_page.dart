@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lnk_lndng_pge_v2/button_link.dart';
+import 'package:lnk_lndng_pge_v2/links_landing_page/button_link.dart';
 import 'package:lnk_lndng_pge_v2/constant.dart';
-import 'package:lnk_lndng_pge_v2/footer.dart';
+import 'package:lnk_lndng_pge_v2/links_landing_page/footer.dart';
 
 class LinksLandingPage extends StatelessWidget {
   @override

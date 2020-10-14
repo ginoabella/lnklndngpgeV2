@@ -1,4 +1,4 @@
-import 'package:lnk_lndng_pge_v2/link_data.dart';
+import 'package:lnk_lndng_pge_v2/model/link_data.dart';
 
 final documents = [
   LinkData(title: 'YouTube', url: 'https://youtube.com'),
