@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lnk_lndng_pge_v2/model/link_data.dart';
+import 'package:lnk_lndng_pge_v2/settings_page/add_button.dart';
+import 'package:lnk_lndng_pge_v2/settings_page/delete_button.dart';
+import 'package:lnk_lndng_pge_v2/settings_page/edit_button.dart';
 import 'package:provider/provider.dart';
 
 class ButtonSettingsSection extends StatelessWidget {
@@ -14,6 +17,7 @@ class ButtonSettingsSection extends StatelessWidget {
     return Expanded(
       flex: 3,
       child: LayoutBuilder(builder: (context, constraints) {
+        final width = constraints.maxWidth * 0.60;
         if (_documents == null) {
           return Center(child: CircularProgressIndicator());
         }
@@ -28,21 +32,10 @@ class ButtonSettingsSection extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline1,
               ),
               SizedBox(height: 100),
-              SizedBox(
-                width: constraints.maxWidth * 0.60,
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 25),
-                  color: Colors.greenAccent.shade400,
-                  onPressed: () {},
-                  child: Text('Add Button'),
-                ),
-              ),
+              AddButton(width: width),
               SizedBox(height: 30),
               SizedBox(
-                width: constraints.maxWidth * 0.6,
+                width: width,
                 height: constraints.maxHeight * 0.5,
                 child: ReorderableListView(
                   children: [
@@ -55,14 +48,8 @@ class ButtonSettingsSection extends StatelessWidget {
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            IconButton(
-                              icon: Icon(Icons.edit),
-                              onPressed: () {},
-                            ),
-                            IconButton(
-                              icon: Icon(Icons.delete),
-                              onPressed: () {},
-                            ),
+                            EditButton(document: document),
+                            DeleteButton(document: document),
                           ],
                         ),
                       ),

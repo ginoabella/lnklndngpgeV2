@@ -22,12 +22,19 @@ class MyApp extends StatelessWidget {
     final linksCollection = FirebaseFirestore.instance.collection('links');
     final userLinkDataString = linksCollection.snapshots().map((snapshot) {
       return snapshot.docs.map((doc) {
-        return LinkData.fromMap(doc.data());
+        return LinkData.fromDocument(doc);
       }).toList();
     });
 
-    return StreamProvider<List<LinkData>>(
-      create: (context) => userLinkDataString,
+    return MultiProvider(
+      providers: [
+        Provider<CollectionReference>(
+          create: (context) => linksCollection,
+        ),
+        StreamProvider<List<LinkData>>(
+          create: (context) => userLinkDataString,
+        ),
+      ],
       child: MaterialApp(
         title: 'Link Landing Page',
         theme: ThemeData(
